@@ -5,10 +5,10 @@
 }
 
 body {
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
   cursor: default;
-  background-color: #F0F0F0;
-  color: #1C1C1A;
+  background-color: #f6f6f6;
+  color: #1c1c1a;
   height: 100vh; /* Use viewport height instead of 100% to occupy full screen height */
   text-align: center;
   overflow: auto;
@@ -22,7 +22,7 @@ body {
   align-items: center;
   justify-content: space-between;
   background-color: #154151;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);  /* optional drop shadow */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* optional drop shadow */
 }
 
 .logo-container img {
@@ -32,10 +32,25 @@ body {
 }
 
 #pianoRollContainer {
+  grid-template-columns: repeat(1 1fr);
+  display: grid;
+  /* grid-template-columns: auto auto auto; */
+  padding: 10px;
+  margin-right: 4px;
+  margin-left: 4px;
+  justify-content: center;
+  width: 100%;
+  gap: 40px;
+  overflow: auto;
+}
+.single-row {
+  grid-template-columns: repeat(1 1fr);
+}
+/* #pianoRollContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 h1 {
   margin-bottom: 20px;
@@ -45,7 +60,7 @@ h1 {
 button {
   padding: 15px 25px;
   font-size: 18px;
-  color: #F0F0F0;
+  color: #f0f0f0;
   background-color: #944038;
   border: none;
   cursor: pointer;
@@ -55,14 +70,15 @@ button {
 
 button {
   /* ... existing button styles ... */
-  border-bottom: 3px solid #381815;  /* A darker shade for 3D effect */
-  position: relative;  /* Required for the top movement on hover */
-  transition: all 1.1s ease;  /* Transition for all properties */
+  border-bottom: 3px solid #381815; /* A darker shade for 3D effect */
+  position: relative; /* Required for the top movement on hover */
+  transition: all 1.1s ease; /* Transition for all properties */
 }
 
 #buttonContainer {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 button:hover {
@@ -77,10 +93,70 @@ button:hover {
   border: 1px solid #ccc;
   margin-bottom: 10px;
   padding: 10px;
-  width: 50%;
+  width: 100%;
   box-sizing: border-box;
+  border-radius: 20px;
 }
 
 .description {
   margin-top: 10px;
+}
+#canvas {
+  width: 2000px;
+  height: 2000px;
+  border: 10px solid;
+}
+.rectangle {
+  border: 1px solid #000;
+  position: absolute;
+  background: rgba(255, 215, 0, 0.2);
+}
+/* added */
+.item-container {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
+}
+#selectedItem {
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+}
+.hide-item {
+  display: none;
+}
+.show-item {
+  display: block;
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255, 215, 0);
+  right: 3px;
+  top: 3px;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 200px;
+}
+@media (min-width: 600px) {
+  #pianoRollContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .item-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  #pianoRollContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
